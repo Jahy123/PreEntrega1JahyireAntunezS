@@ -1,0 +1,11 @@
+.contenedorTitulo {
+  display: flex;
+  width: 100%;
+  height: 98vh;
+  background-color: black;
+  color: white;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
