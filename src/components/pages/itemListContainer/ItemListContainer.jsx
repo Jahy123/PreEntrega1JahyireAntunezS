@@ -1,16 +1,18 @@
-import styles from "./itemListContainer.module.css";
+import { useState, useEffect } from "react";
+import { products } from "../../../productsMock";
+import ItemList from "./itemList";
 
-export const ItemListContainer = ({ saludo }) => {
-  return (
-    <div className={styles.contenedorTitulo}>
-      <h1 className={styles.titulo}>{saludo}</h1>
-      <div className={styles.contenedorLogo}>
-        <img
-          className={styles.logo}
-          src="https://res.cloudinary.com/drqhvncqw/image/upload/v1695848304/Teendencia_1_pkhk0u.png"
-          alt="Logo de Teen|dencia"
-        />
-      </div>
-    </div>
-  );
+export const ItemListContainer = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    // const tarea2 = fetch("api")
+    // tarea2.then().catch()
+    const tarea = new Promise((resolve, reject) => {
+      resolve(products);
+      // reject("Algo salió mal");
+    });
+    tarea.then((res) => setItems(res)).catch((error) => console.log(error));
+  }, []);
+  return <ItemList items={items} />;
 };
