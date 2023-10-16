@@ -1,18 +1,26 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ItemListContainer } from "./components/pages/itemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/pages/itemDetailContainer/ItemDetailContainer";
-import { Navbar } from "./components/layout/navbar/Navbar";
+import Layout from "./components/layout/Layout";
+import Cart from "./components/pages/cart/Cart";
 
 function App() {
-  const [montar, setMontar] = useState(false);
   return (
-    <div>
-      <Navbar />
-      {/* <button onClick={() => setMontar(!montar)}>Montar/Desmontar</button>
-      montar && <CounterContainer stock={20} />
-      <ItemListContainer />
-      <FetchingData /> */}
-      <ItemDetailContainer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/item/:id" element={<ItemDetailContainer />} />
+          <Route
+            path="/category/:categoryName"
+            element={<ItemListContainer />}
+          />
+        </Route>
+
+        <Route path="*" element={<h1>Not found</h1>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
