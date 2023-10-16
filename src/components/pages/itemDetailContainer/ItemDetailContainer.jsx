@@ -5,7 +5,7 @@ import { ItemDetail } from "./ItemDetail";
 const ItemDetailContainer = () => {
   const [productSelected, setProductSelected] = useState({});
 
-  let id = 1;
+  let id = 3;
 
   useEffect(() => {
     let producto = products.find((product) => product.id === id);

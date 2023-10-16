@@ -1,0 +1,14 @@
+.botones {
+  background-color: bisque;
+  border: none;
+  cursor: pointer;
+}
+.contador {
+  display: flex;
+  width: 50%;
+  flex-direction: row;
+  align-content: center;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}

@@ -1,9 +1,6 @@
 import { useState } from "react";
-import CounterContainer from "./components/common/counter/CounterContainer";
-import { Navbar } from "./components/layout/navbar/Navbar";
-import { ItemListContainer } from "./components/pages/itemListContainer/ItemListContainer";
-import FetchingData from "./components/pages/itemListContainer/fetchingData/FetchingData";
 import ItemDetailContainer from "./components/pages/itemDetailContainer/ItemDetailContainer";
+import { Navbar } from "./components/layout/navbar/Navbar";
 
 function App() {
   const [montar, setMontar] = useState(false);
