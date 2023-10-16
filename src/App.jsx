@@ -10,10 +10,9 @@ function App() {
   return (
     <div>
       <Navbar />
-      {/* <button onClick={() => setMontar(!montar)}>Montar/Desmontar</button> */}
-
-      {montar && <CounterContainer stock={20} />}
-      {/*<ItemListContainer />
+      {/* <button onClick={() => setMontar(!montar)}>Montar/Desmontar</button>
+      montar && <CounterContainer stock={20} />
+      <ItemListContainer />
       <FetchingData /> */}
       <ItemDetailContainer />
     </div>
