@@ -19,11 +19,11 @@ export const Navbar = () => {
           <Link to="/">
             <li>Productos en Teen|dencia</li>
           </Link>
-          <Link to="category/urbanas">
-            <li>urbanas</li>
+          <Link to="category/ropa">
+            <li>Ropa</li>
           </Link>
-          <Link to="category/deportivas">
-            <li>Deportivas</li>
+          <Link to="category/maquillaje">
+            <li>Maquillaje</li>
           </Link>
 
           <Link to="/" className={styles.contenedorIconos}>
