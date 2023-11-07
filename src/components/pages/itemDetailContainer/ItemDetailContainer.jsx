@@ -1,20 +1,55 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { products } from "../../../productsMock";
 import { ItemDetail } from "./ItemDetail";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { CartContext } from "../../../context/CartContext";
 
+// const ItemDetailContainer = () => {
+//   const [productSelected, setProductSelected] = useState({});
+
+//   const { id } = useParams();
+//   const navigate = useNavigate();
+//   const { addToCart } = useContext(CartContext);
+//   useEffect(() => {
+//     let producto = products.find((product) => product.id === +id);
+
+//     const getProduct = new Promise((resolve, reject) => {
+//       resolve(producto);
+//       // reject("error");
+//     });
+
+//     getProduct
+//       .then((res) => setProductSelected(res))
+//       .catch((err) => console.log(err));
+//   }, [id]);
+
+//   const onAdd = (cantidad) => {
+//     let product = {
+//       ...productSelected,
+//       quantity: cantidad,
+//     };
+//     addToCart(product);
+//   };
+
+//   return <ItemDetail productSelected={productSelected} onAdd={onAdd} />;
+// };
+
+// export default ItemDetailContainer;
 const ItemDetailContainer = () => {
   const [productSelected, setProductSelected] = useState({});
 
   const { id } = useParams();
-  const navigate = useNavigate();
+
+  const { addToCart, getQuantityById } = useContext(CartContext);
+
+  let totalQuantity = getQuantityById(+id);
+  
 
   useEffect(() => {
     let producto = products.find((product) => product.id === +id);
 
-    const getProduct = new Promise((resolve, reject) => {
+    const getProduct = new Promise((resolve) => {
       resolve(producto);
-      // reject("error");
     });
 
     getProduct
@@ -23,15 +58,21 @@ const ItemDetailContainer = () => {
   }, [id]);
 
   const onAdd = (cantidad) => {
-    let obj = {
+    let item = {
       ...productSelected,
       quantity: cantidad,
     };
-    console.log("este es el producto que se agrega", obj);
-    navigate("/cart");
+
+    addToCart(item);
   };
 
-  return <ItemDetail productSelected={productSelected} onAdd={onAdd} />;
+  return (
+    <ItemDetail
+      productSelected={productSelected}
+      onAdd={onAdd}
+      initial={totalQuantity}
+    />
+  );
 };
 
 export default ItemDetailContainer;
