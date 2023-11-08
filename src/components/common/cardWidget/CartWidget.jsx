@@ -5,10 +5,11 @@ import { useContext } from "react";
 import { CartContext } from "../../../context/CartContext";
 
 export const CartWidget = () => {
-  const x = useContext(CartContext);
+  const { getTotalQuantity } = useContext(CartContext);
+  let total = getTotalQuantity();
   return (
     <Link to="/cart" className={styles.contenedorIconos}>
-      <span className={styles.iconos}>0</span>
+      <span className={styles.iconos}>{total}</span>
       <IoIosCart className={styles.iconos} />
     </Link>
   );
