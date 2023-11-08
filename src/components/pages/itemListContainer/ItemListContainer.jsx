@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { products } from "../../../productsMock";
 import ItemList from "./itemList";
 import { useParams } from "react-router-dom";
 import BeatLoader from "react-spinners/BeatLoader";
 import Skeleton from "@mui/material/Skeleton";
+import { db } from "../../../firebaseConfig";
+import { getDocs, collection, query, where } from "firebase/firestore";
 
 export const ItemListContainer = () => {
   const [items, setItems] = useState([]);
@@ -11,17 +12,44 @@ export const ItemListContainer = () => {
   const { categoryName } = useParams();
 
   useEffect(() => {
-    const productosFiltrados = products.filter(
-      (product) => product.category === categoryName
-    );
-
-    const tarea = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(categoryName ? productosFiltrados : products);
-      }, 500);
+    let productsCollection = collection(db, "products");
+    let consulta = undefined;
+    if (!categoryName) {
+      consulta = productsCollection;
+    } else {
+      consulta = query(
+        productsCollection,
+        where("category", "==", categoryName)
+      );
+    }
+    getDocs(consulta).then((res) => {
+      let newArray = res.docs.map((product) => {
+        return { ...product.data(), id: product.id };
+      });
+      setItems(newArray);
     });
 
-    tarea.then((res) => setItems(res)).catch((error) => console.log(error));
+    // if (!categoryName) {
+    //   let productsCollection = collection(db, "products");
+    //   getDocs(productsCollection).then((res) => {
+    //     let newArray = res.docs.map((product) => {
+    //       return { id: product.id, ...product.data() };
+    //     });
+    //     setItems(newArray);
+    //   });
+    // } else {
+    //   let productsCollection = collection(db, "products");
+    //   let collectionFiltered = query(
+    //     productsCollection,
+    //     where("category", "==", categoryName)
+    //   );
+    //   getDocs(collectionFiltered).then((res) => {
+    //     let newArray = res.docs.map((product) => {
+    //       return { id: product.id, ...product.data() };
+    //     });
+    //     setItems(newArray);
+    //   });
+    // }
   }, [categoryName]);
 
   // IF CON RETURN TEMPRANO
