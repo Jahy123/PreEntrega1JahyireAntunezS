@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ItemList from "./itemList";
+import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
 import Skeleton from "@mui/material/Skeleton";
 import { db } from "../../../firebaseConfig";
