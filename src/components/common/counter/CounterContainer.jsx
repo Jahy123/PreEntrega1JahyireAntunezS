@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CounterPresentacional from "./CounterPresentacional";
-
+import Swal from "sweetalert2";
 const CounterContainer = ({ stock, onAdd }) => {
   const [contador, setContador] = useState(0);
 
@@ -8,7 +8,7 @@ const CounterContainer = ({ stock, onAdd }) => {
     if (contador < stock) {
       setContador(contador + 1);
     } else {
-      alert("cantidad máxima");
+      Swal.fire("Cantidad máxima", "", "warning");
     }
   };
   const restar = () => {

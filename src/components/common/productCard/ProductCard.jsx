@@ -5,10 +5,14 @@ const ProductCard = ({ item }) => {
     <div className={styles.contenedor}>
       <img className={styles.img} src={item.img} alt="" />
       <h2 className={styles.h2}>{item.title}</h2>
-      <h3 className={styles.description}>{item.description}</h3>
-      <Link to={`/item/${item.id}`} className={styles.button}>
-        <button className={styles.button}>Ver detalle</button>
-      </Link>
+
+      {item.stock > 0 ? (
+        <Link to={`/item/${item.id}`} className={styles.enlace}>
+          <button className={styles.button}>Ver detalle</button>
+        </Link>
+      ) : (
+        <button className={styles.buttonSinStock}>No disponible</button>
+      )}
     </div>
   );
 };

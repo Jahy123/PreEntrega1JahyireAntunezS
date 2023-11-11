@@ -2,12 +2,11 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAuhNLpbeusNyNUKXNWI0iM43cF1YoDtI0",
-  authDomain: "teendencia-c3515.firebaseapp.com",
-  projectId: "teendencia-c3515",
-  storageBucket: "teendencia-c3515.appspot.com",
-  messagingSenderId: "375011366941",
-  appId: "1:375011366941:web:4136b370158b0dd7dc8ef4",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  messagingSenderId: import.meta.env.VITE_STORAGE_BUCKET,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);

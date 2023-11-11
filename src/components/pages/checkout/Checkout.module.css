@@ -1,0 +1,21 @@
+.form {
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+.formConfirmado {
+  background-color: rgb(217, 217, 149);
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}

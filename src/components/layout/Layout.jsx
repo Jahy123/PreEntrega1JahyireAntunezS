@@ -5,11 +5,11 @@ import Styles from "./Layout.module.css";
 
 const layout = () => {
   return (
-    <div>
+    <>
       <Navbar className={Styles.navbar} />
       <Outlet className={Styles.outlet} />
       <Footer className={Styles.footer} />
-    </div>
+    </>
   );
 };
 

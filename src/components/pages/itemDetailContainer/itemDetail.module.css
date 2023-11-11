@@ -1,32 +1,50 @@
 .contenedorDetalles {
-  width: 60vw;
+  width: 100%;
   height: 80vh;
-  background-color: bisque;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+}
+.contenedorImg {
+  width: 30%;
+}
+.img {
+  width: 100%;
+}
+.detalles {
+  padding: 4%;
+  width: 40%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-content: center;
+  align-items: flex-start;
   justify-content: center;
-  align-items: center;
-  padding: 5%;
-  margin-left: auto;
-  margin-right: auto;
-}
-.img {
-  width: 30%;
 }
 h1 {
   font-size: 1.5rem;
+  margin-bottom: 5%;
 }
 h2 {
   font-size: 1.2rem;
 }
-.contenedorPrecioYAgregar {
-  width: 100%;
-  height: 30%;
+.precio {
+  font-size: 1.6rem;
+  margin: 10% 0;
+}
+.agregados {
+  font-size: 1rem;
+  color: #6a9206;
+}
+.contador {
   display: flex;
+  width: 100%;
+  height: 10%;
+  font-size: 1.5rem;
   flex-direction: row;
   align-content: center;
+  justify-content: flex-start;
   align-items: center;
-  margin-top: 10%;
-  justify-content: space-evenly;
 }
